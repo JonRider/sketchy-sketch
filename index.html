@@ -4,7 +4,51 @@
     <meta charset="utf-8">
     <title>Sketchy Sketch</title>
   </head>
-  <body>
+  <style>
 
+button {
+  padding: 5px;
+  margin: 20px;
+  font-size: 18px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-gap: 0px;
+  background-color: red;
+  padding: 25px;
+  flex-wrap: nowrap;
+  width : 25%;
+  height: 25%;
+  border-radius: 25px;
+}
+
+.grid-container > div {
+  background-color: white;
+  text-align: center;
+  padding: 10px 12.5px 12.5px 10px;
+  font-size: 0px;
+}
+
+.draw {
+  background-color: black !important;
+}
+
+.pixel {
+  background-color: white;
+}
+
+</style>
+  <body>
+    <div class="container" align="center">
+      <h1>Sketchy Sketch</h1>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="container" align="center">
+      <div class="grid-container" id="main"></div>
+    </div>
   </body>
+
+  <script src="script.js"></script>
 </html>
