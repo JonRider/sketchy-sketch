@@ -3,6 +3,16 @@ function changeColor(e) {
   console.log(e.target);
 }
 
+function clear() {
+  pixel = document.getElementsByClassName('pixel');
+  pixels = Array.from(pixel);
+
+  pixels.forEach(function (pixel) {
+			pixel.classList.remove("draw");
+      console.log("Reset complete.")
+		});
+}
+
 // create array of 16x16 grid
 for (n = 0; n < 256; n++) {
   var div = document.createElement("div");
@@ -13,8 +23,9 @@ for (n = 0; n < 256; n++) {
   document.getElementById("main").appendChild(div);
 }
 
+// set up pixesl with event listeners
 pixel = document.getElementsByClassName('pixel');
-	pixels = Array.from(pixel);
+pixels = Array.from(pixel);
 
 	pixels.forEach(function (pixel) {
 		pixel.addEventListener("mouseover", function () {
@@ -22,3 +33,6 @@ pixel = document.getElementsByClassName('pixel');
       console.log(pixel);
 		});
 	});
+
+reset = document.getElementById("reset");
+reset.onclick = () => clear();
