@@ -25,6 +25,7 @@ function setupGrid() {
   pixels = Array.from(pixel);
 
   	pixels.forEach(function (pixel) {
+      pixel.style.webkitFilter = "brightness(100%)";
   		pixel.addEventListener("mouseover", function () {
   			//pixel.classList.add("draw");
         if (rainbowOn == false) {
@@ -32,6 +33,11 @@ function setupGrid() {
         }
         else {
           pixel.style.backgroundColor = getRandomColor();
+          // lower brightness by ten percent per pass
+          brightness = pixel.style.webkitFilter;
+          brightness = brightness.replace(/\D/g,'');
+          brightness = brightness - 10;
+          pixel.style.webkitFilter = "brightness(" + brightness + "%)";
         }
 
   		});
