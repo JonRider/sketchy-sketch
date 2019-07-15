@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <!--Responsive Viewport Meta tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Londrina+Sketch&display=swap" rel="stylesheet">
     <title>Sketchy Sketch</title>
   </head>
@@ -20,7 +22,7 @@ h1 {
 
 button {
   padding: 10px 20px 10px 20px;
-  margin: 0px 30px 30px 30px;
+  margin: 0px 10px 30px 10px;
   display: inline-block;
   font-size: 20px;
   font-family: 'Cabin Sketch', cursive;
@@ -33,9 +35,30 @@ button {
   box-shadow: 0 6px #999;
 }
 
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
+
+.rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 button:hover  {
   background-color: #4b5050;
   color: white;
+}
+
+.rainbow:hover {
+  color: white;
+  background-clip: border-box;
 }
 
 button:active {
@@ -47,7 +70,7 @@ button:active {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   grid-gap: 0px;
-  background-color: red;
+  background-color: #CC0000;
   padding: 25px;
   flex-wrap: nowrap;
   width : 450px;
@@ -61,10 +84,6 @@ button:active {
   font-size: 0px;
 }
 
-.draw {
-  background-color: black !important;
-}
-
 .pixel {
   background-color: white;
 }
@@ -74,6 +93,9 @@ button:active {
     <div class="container" align="center">
       <h1>Sketchy Sketch</h1>
       <button id="reset">Reset</button>
+      <button class="black" id="black">Black</button>
+      <button class="red" id="red">Red</button>
+      <button class="rainbow" id="rainbow">Rainbow</button>
     </div>
     <div class="container" align="center">
       <div class="grid-container" id="main"></div>

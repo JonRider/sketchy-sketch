@@ -5,7 +5,7 @@
 function setupGrid() {
   // remove previous grid elements
   removeGrid();
-
+  color = "black";
   // setup auto string with auto equal to square minus trailing whitespace
   let auto = "auto ";
   auto = auto.repeat(square);
@@ -26,7 +26,8 @@ function setupGrid() {
 
   	pixels.forEach(function (pixel) {
   		pixel.addEventListener("mouseover", function () {
-  			pixel.classList.add("draw");
+  			//pixel.classList.add("draw");
+        pixel.style.backgroundColor = color;
   		});
   	});
 }
@@ -36,18 +37,6 @@ function setupGrid() {
 function changeColor(e) {
   e.target.classList.add('draw');
 }
-
-
-// clear the grid
-function clear() {
-  pixel = document.getElementsByClassName('pixel');
-  pixels = Array.from(pixel);
-
-  pixels.forEach(function (pixel) {
-			pixel.classList.remove("draw");
-		});
-}
-
 
 // remove previous grid
 function removeGrid() {
@@ -59,6 +48,7 @@ function removeGrid() {
 
 
 // initial run
+let color = "black";
 let square = 16;
 setupGrid();
 
@@ -71,6 +61,18 @@ reset.onclick = () => {
   }
   square = parseInt(input);
   console.log(square);
-  clear();
   setupGrid();
+}
+
+// color change
+// black button
+black = document.getElementById("black");
+black.onclick = () => {
+  color = "black";
+}
+
+// red button
+red = document.getElementById("red");
+red.onclick = () => {
+  color = "red";
 }
