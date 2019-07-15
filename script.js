@@ -1,17 +1,21 @@
+// script.js
+// JonRider
+
 // setup grid
 function setupGrid() {
-  // create array of 16x16 grid
-  // setup auto string with auto equal to square minus trailing whitespace
+  // remove previous grid elements
   removeGrid();
+
+  // setup auto string with auto equal to square minus trailing whitespace
   let auto = "auto ";
   auto = auto.repeat(square);
   auto = auto.slice(0, -1);
   document.getElementById("main").style.gridTemplateColumns = auto;
+
+  // create array of square x square grid
   for (n = 0; n < (square * square); n++) {
     var div = document.createElement("div");
     div.classList.add("pixel");
-
-    div.id = "div-" + n;
 
     document.getElementById("main").appendChild(div);
   }
@@ -33,6 +37,7 @@ function changeColor(e) {
   e.target.classList.add('draw');
 }
 
+
 // clear the grid
 function clear() {
   pixel = document.getElementsByClassName('pixel');
@@ -43,6 +48,7 @@ function clear() {
 		});
 }
 
+
 // remove previous grid
 function removeGrid() {
   let element = document.getElementById("main");
@@ -51,6 +57,7 @@ function removeGrid() {
   }
 }
 
+
 // initial run
 let square = 16;
 setupGrid();
@@ -58,7 +65,10 @@ setupGrid();
 // listen for reset
 reset = document.getElementById("reset");
 reset.onclick = () => {
-  let input = prompt("How many squares per side do you want the Grid?", "16");
+  let input = 0;
+  while (input < 1 || input > 100 || isNaN(input) == true) {
+    input = prompt("How many squares per side do you want the Grid? (1-100)", "16");
+  }
   square = parseInt(input);
   console.log(square);
   clear();
