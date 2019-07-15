@@ -27,7 +27,13 @@ function setupGrid() {
   	pixels.forEach(function (pixel) {
   		pixel.addEventListener("mouseover", function () {
   			//pixel.classList.add("draw");
-        pixel.style.backgroundColor = color;
+        if (rainbowOn == false) {
+          pixel.style.backgroundColor = color;
+        }
+        else {
+          pixel.style.backgroundColor = getRandomColor();
+        }
+
   		});
   	});
 }
@@ -36,6 +42,16 @@ function setupGrid() {
 // change the color of selected pixel
 function changeColor(e) {
   e.target.classList.add('draw');
+}
+
+// https://stackoverflow.com/questions/1484506/random-color-generator#1484514
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 // remove previous grid
@@ -50,6 +66,7 @@ function removeGrid() {
 // initial run
 let color = "black";
 let square = 16;
+let rainbowOn = false;
 setupGrid();
 
 // listen for reset
@@ -69,10 +86,18 @@ reset.onclick = () => {
 black = document.getElementById("black");
 black.onclick = () => {
   color = "black";
+  rainbowOn = false;
 }
 
 // red button
 red = document.getElementById("red");
 red.onclick = () => {
   color = "red";
+  rainbowOn = false;
+}
+
+// rainbow button
+rainbow = document.getElementById("rainbow");
+rainbow.onclick = () => {
+  rainbowOn = true;
 }
