@@ -34,7 +34,7 @@ function setupGrid() {
         else {
           pixel.style.backgroundColor = getRandomColor();
           // lower brightness by ten percent per pass
-          brightness = pixel.style.webkitFilter;
+          let brightness = pixel.style.webkitFilter;
           brightness = brightness.replace(/\D/g,'');
           brightness = brightness - 10;
           pixel.style.webkitFilter = "brightness(" + brightness + "%)";
